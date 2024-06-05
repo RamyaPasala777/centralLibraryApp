@@ -1,0 +1,73 @@
+/* Enter your custom styles here */
+
+
+.page {
+    background-image: url("https://i2-prod.mirror.co.uk/incoming/article13150515.ece/ALTERNATES/s1227b/0_PAY-Clock-over-door-to-Honby-library-Liverpool-central-library-Picton-reading-rooms.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+.homepagetext{
+    color-scheme:dark ;
+    color:white;
+    font-size: larger;
+    font-weight: bolder;
+    padding-top: 510px;
+    padding-left: 150px;
+}
+
+
+.library{
+    color: red;
+}
+
+
+.login{
+color:green;
+
+}
+
+.classTableHeaderTitle{
+    color:green
+}
+
+
+.LOA{
+color: green;
+}
+    
+.username{
+ color:red;
+}
+.password{
+    color:red;
+}
+.input{
+    color: blue;
+}
+
+
+.loginpform{
+
+    background-color: yellow ;
+   
+}
+
+.adminheader{
+    background-color: linen;
+}
+.admintitle{
+  background-color: linen ;
+}
+.admintable{
+    background-color: bisque;
+}
+.issuebookheader{
+    background-color: beige;
+}
+.activeLoans{
+    width: 4800px;
+    height:400px;
+}

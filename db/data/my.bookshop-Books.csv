@@ -1,0 +1,14 @@
+ID,ISBN,title,quantity,author,genre,language,availability
+b244958a-1cae-11ef-adc4-325096b39f47,0-5582-2179-3,harrypotter,25,Jkrowling,Adventure,English,25
+cfb6ff0e-1cae-11ef-badc-325096b39f49,0-7355-7372-7,Wuthering Heights,45,Emily Bronte,Fantasy,English,45
+cfb6ff0e-1cae-11ef-badc-325096b39f45,0-1726-0686-1,Jane Eyre,54,charlotte Bronte,Horral,Chinese,54
+e943ac92-1cae-11ef-8a76-325096b39f47,0-4680-6537-7,Frankenstein,33,Mary Shelley,Comedy,French,33
+f6e56782-1cae-11ef-a065-325096b39f47,0-1151-7936-4,True colours,65,Adam Gilchrist,Adventure,Spanish,65
+ce5741e2-5143-4bcb-94ba-510f0d0747d7,0-4853-5566-3,Freedom in Exile,33,Dalai Lama,Fantasy,Greek,33
+498787fb-303f-4c25-8292-a97ee7867da2,0-1355-9746-3,The Red Sari,44,Javier Moro,Horral,Germany,44
+296e8e45-6642-4603-8fe5-36ebe78db8fc,0-3305-9619-5,Lowland,55,Jhumpa Lahiri,Comedy,Hindhi,55
+4eb17f3b-2bb9-423b-8db5-7177b4255798,0-5601-0736-6,Runs in Ruins,43,Sunil Gavasakar,Fantasy,Telugu,43
+4eb17f3b-2bb9-423b-8db5-7177b4255796,0-1294-8383-4,Dark Star,33,Chetan Bhagat,Fantasy,English,33
+cfc607e3-0be0-454b-9aef-6b1d8abc1bfb,0-5138-2533-9,Funny Bones,12,Twinkle Kanna,Comedy,English,12
+2e8f1554-83b4-42fa-9689-27514360b8bb,0-1775-1951-7,Flood of Fire,32,Amitav Ghosh,Horral,Hindi,32
+c082b04a-1caf-11ef-89e9-325096b39f47,0-3408-4757-3,War and Peace,27,Leo Tolstoy,Adventure,Spanish,27
