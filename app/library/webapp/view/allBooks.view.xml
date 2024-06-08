@@ -1,5 +1,4 @@
 <mvc:View
-  
     controllerName="com.app.library.controller.allBooks"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -14,17 +13,27 @@
         headerExpanded="true"
         class="admintable"
     >
+ 
+
         <f:title>
-            <f:DynamicPageTitle id="idallBooksReservePageTitle" class="admintable">
+            <f:DynamicPageTitle
+                id="idallBooksReservePageTitle"
+                class="admintable"
+            >
                 <f:heading>
                     <Title
                         id="idallBooksReservePageHeadingTitle"
-                        text="All Books"   />
+                        text="All Books"
+                    />
+                   
                 </f:heading>
- 
-                <f:expandedContent>
+
+             
+                <f:navigationActions>
+                  <Button id="logout" text="logout" type="Default" press="logout"></Button>
+                </f:navigationActions>
+                  
                 
-                </f:expandedContent>
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
@@ -93,14 +102,12 @@
                     <VBox
                         id="idGoButton"
                         class="sapUiSmallMarginEnd"
-                       
                     >
                         <Label
                             id="idGoButtonLabel"
                             text=""
                         />
                         <Button
-                            
                             text="Go"
                             type="Emphasized"
                             press="onGoPress"
@@ -121,7 +128,6 @@
                             press="onClearFilterPress"
                         />
                     </VBox>
-                    
                 </HBox>
             </f:DynamicPageHeader>
         </f:header>
@@ -141,18 +147,16 @@
                         <Title
                             id="idTableHeaderTitle"
                             text="Total Books In Library:{/Books/$count}"
-                            
                         />
-                        <HBox>
-                  <Button
-                            id="idreserveFilterButtonValue"
-                            text="Reserve"
-                            type="Emphasized"
-                            press="onReservePress"
-                        />  
-
-         </HBox>
-                        </OverflowToolbar>
+                      <ToolbarSpacer id="toolbarspacer"></ToolbarSpacer>
+                            <Button
+                                id="idreserveFilterButtonValue"
+                                text="Reserve"
+                                type="Emphasized"
+                                press="onReservePress"
+                            />
+                   
+                    </OverflowToolbar>
                 </headerToolbar>
                 <columns>
                     <Column id="idISBNCol">
@@ -185,12 +189,12 @@
                             text="Genre"
                         />
                     </Column>
-                 <Column id="idavailableCol">
+                    <Column id="idavailableCol">
                         <Title
                             id="idavailableColTitle"
                             text="Availability"
                         />
-                    </Column> 
+                    </Column>
 
                     <Column id="idlangCol">
                         <Title
@@ -198,7 +202,6 @@
                             text="Language"
                         />
                     </Column>
-
                 </columns>
                 <items>
                     <ColumnListItem
@@ -234,8 +237,6 @@
                                 id="idlangColValue"
                                 text="{language}"
                             />
-                            
-                           
                         </cells>
                     </ColumnListItem>
                 </items>
@@ -243,4 +244,3 @@
         </f:content>
     </f:DynamicPage>
 </mvc:View>
- 

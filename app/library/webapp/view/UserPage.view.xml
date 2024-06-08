@@ -20,20 +20,19 @@
                 <HBox>
                     <Title
                         id="idUsersPageHeadingTitle"
-                        
                         text="{userName}"
                     />
                     </HBox>
-                    
                 </f:heading>
-
+                <f:navigationActions>
+                  <Button id="logout1" text="logout" type="Default" press="logout1"></Button>
+                </f:navigationActions>
               
                 	<f:expandedContent >
                     <VBox >
 						<Label text="{phoneNumber}"/>
                         <Label text="{email}"/>
-                        </VBox>
-                        
+                        </VBox>    
 					</f:expandedContent>
                   
 					

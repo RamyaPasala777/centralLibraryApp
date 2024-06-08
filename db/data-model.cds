@@ -17,12 +17,15 @@ entity Books : cuid {
                    on activeLoans.book = $self;
 
 }
+@assert.unique:{
+userName: [userName],
 
+}
 entity Users : cuid {
   userName    : String;
   password    : String;
   email       : String;
-  phoneNumber : Integer;
+  phoneNumber : Integer64;
   Address     : String;
   userType    : String;
   book:Association to many Books on book.user=$self;

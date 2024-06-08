@@ -4,22 +4,23 @@
     xmlns="sap.m"
     controllerName="com.app.library.controller.HomePage"
 >
-    <App>
+    
         <Page
             title="{i18n>title}"
             class="page"
         >
             <headerContent>
                 <Title
-                    class="LOA"
+                    class="title"
                     text="Library of ARTIHCUS"
                     textAlign="Center"
                 />
-              
+                <Button id="books" text="Available Books" type="Default" press="AvailableBooksBtn"/>
                 <Button id="loginbtn" text="Login" type="Emphasized" icon="sap-icon://visits" press="loginbtn"/>
                 <Button id="signupbtn" text="SignUp" type="Emphasized" press="signupbtn" />
+                
             </headerContent>
            
         </Page>
-    </App>
+   
 </mvc:View>

@@ -267,7 +267,7 @@ sap.ui.define([
                     try{
                         oModel.update("/Books(" + oId + ")", oPayload.book, {
                             success: function() {
-                                // this.getView().byId("idBooksTable").getBinding("items").refresh();//
+                                 this.getView().byId("idBooksTable").getBinding("items").refresh();//
                                 //this.oEditBooksDialog.close();
                             },
                             error: function(oError) {
@@ -300,12 +300,12 @@ sap.ui.define([
                         MessageToast.show("Deletion Error: " + oError);
                     });
  
-                    this.getView().byId("activeloansTable").removeSelections(true);
+                    //this.getView().byId("activeloansTable").removeSelections(true);
                     this.getView().byId("activeloansTable").getBinding("items").refresh();
                 } else {
                     MessageToast.show("Please Select Rows to Delete");
                 };
-                location.reload();
+                //location.reload();
            
 
             },
@@ -415,7 +415,7 @@ sap.ui.define([
             oAval=oSelectedBook.book.availability-1;
             console.log(oSelectedBook)
             var current=new Date();
-            let due=new Date(current.getFullYear(),current.getMonth()+2)
+            let due=new Date(current.getFullYear(),current.getMonth(),current.getDay()+18)
         
             const userModel = new sap.ui.model.json.JSONModel({
                 book_ID : oSelectedBook.book.ID,
@@ -464,6 +464,10 @@ sap.ui.define([
                 sap.m.MessageBox.error("Some technical Issue");
             }
         },
+        logout2:function(){
+            var oRouter=this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteHomePage",{},true)
+        }
         
  
         });

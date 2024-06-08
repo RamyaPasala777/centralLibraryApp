@@ -145,7 +145,12 @@ sap.ui.define(
                 //this.oCreateBooksDialog.close();
                 sap.m.MessageBox.error("Some technical Issue");
             }
-    }
+           
+    },
+    logout:function(){
+              var oRouter=this.getOwnerComponent().getRouter();
+              oRouter.navTo("RouteHomePage",{},true);
+      }
       });
     });
   

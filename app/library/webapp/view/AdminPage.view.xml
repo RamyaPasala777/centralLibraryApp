@@ -23,6 +23,9 @@
                         class="library"
                     />
                 </f:heading>
+                <f:navigationActions>
+                  <Button id="logout2" text="logout" type="Default" press="logout2"></Button>
+                </f:navigationActions>
                 <f:expandedContent>
                 <Label id="labellll" text="Hello..!{userName} from central library"/>
                 </f:expandedContent>

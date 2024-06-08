@@ -102,19 +102,84 @@ sap.ui.define([
                     }
                 })
             },
+
+ AvailableBooksBtn: async function () {
+                if (!this.libraryinfo) {
+                    this.libraryinfo = await this.loadFragment("libraryinfo")
+                }
+                this.libraryinfo.open();
+            },
+            onlibraryclosedialog: function () {
+                if(this.libraryinfo.isOpen()){
+                this.libraryinfo.close()
+                }
+            },
+
             signupBtnClick: async function () {
                
        
             const oPayload = this.getView().getModel("localModel").getProperty("/"),
             oModel = this.getView().getModel("ModelV2");
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                var phoneRegex=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
+                if(!(emailRegex.test(oPayload.email)&&phoneRegex.test(oPayload.phoneNumber))){
+                    MessageToast.show("please enter valid Email and PhoneNumber")
+                    return
+                }
         try {
             await this.createData(oModel, oPayload, "/Users");
             // this.getView().byId("idEmployeeTable").getBinding("items").refresh();
             this.signupDialog.close();
             MessageToast.show("SignUp Successful");
         } catch (error) {
-            this.signupDialog.close();
+            MessageToast.show("User already exists.please enter the valid details")
+            // this.signupDialog.close();
         }
+    },
+      // Emali condition Check
+      onEmailLiveChange: async function(oEvent) {
+        var oEmail = oEvent.getSource();
+        var oVal = oEmail.getValue();
+        // Regular expression for validating email
+        var regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (oVal.trim() === '') {
+            oEmail.setValueState("None"); // Clear any previous state
+        } else if (oVal.match(regexp)) {
+            oEmail.setValueState("Success");
+        } else {
+            oEmail.setValueState("Error");
+            // Check if MessageToast is available before showing message
+            if (sap.m.MessageToast) {
+                sap.m.MessageToast.show("Invalid Email format");
+            } else {
+                console.error("MessageToast is not available.");
+            }
+        }
+    },
+    onMobileVal:async function(oEvent)
+    {
+        var oPhone  = oEvent.getSource();
+        var oVal1 = oPhone.getValue();
+
+        // regular expression for validating the phone
+        var regexpMobile = /^[0-9]{10}$/;
+        if (oVal1.trim() === '') {
+            oPhone.setValueState("None"); // Clear any previous state
+        } else if (oVal1.match(regexpMobile)) {
+            oPhone.setValueState("Success");
+        } else {
+            oPhone.setValueState("Error");
+            // Check if MessageToast is available before showing message
+            if (sap.m.MessageToast) {
+                sap.m.MessageToast.show("Invalid Phone format");
+            } else {
+                console.error("MessageToast is not available.");
+            }
+        }
+
+         
+
+
     }
         });
     });

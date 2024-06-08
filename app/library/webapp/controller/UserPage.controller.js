@@ -97,14 +97,18 @@ sap.ui.define(
             this.notificationDialog = await this.loadFragment("notifications2")
         }
         this.notificationDialog.open();
-        const oObjectPage = this.getView().byId("idloginDialog");
-                oObjectPage.bindElement(`/Users(${this.ID})`);
+        const oObjectPage = this.getView().byId("idnotifyDialog");
+        oObjectPage.bindElement(`/Users(${this.ID})`);
     },
     onCloseDialog: function () {
         if (this.notificationDialog.isOpen()) {
             this.notificationDialog.close()
         }
     },
+    logout1:function(){
+      var oRouter=this.getOwnerComponent().getRouter();
+      oRouter.navTo("RouteHomePage",{},true)  
+    }
       });
     }
   );

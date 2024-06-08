@@ -4,22 +4,22 @@
     xmlns="sap.m"
 >
     <Dialog
-        id="idnotifyDialog"
+        id="idLibraryInformationDialog"
         resizable="true"
         draggable="true"
         contentWidth="30%"
-        title="Login Details"
+        title="Books Available in Library"
     >
         <customHeader>
             <Bar>
             <contentLeft>
-            <Text text="Notifications"></Text>
+            <Text text="Books Available in Library"></Text>
             </contentLeft>
                 <contentRight>
                     <Button
-                        id="cancelbtn"
+                        id="cancelbtn11"
                         icon="sap-icon://sys-cancel"
-                        press="onCloseDialog"
+                        press="onlibraryclosedialog"
                         type="Reject"
                     />
                 </contentRight>
@@ -30,26 +30,36 @@
          
         alternateRowColors="true"
         backgroundDesign="Transparent"
-        items="{activeLoans}"
+        items="{/Books}"
     >
         <columns>
-            <Column id="idIsbnColumn">
+            <Column id="idbookscolumn">
                 <Title
-                    id="idIsbntitle"
-                    text="Notification about Issued books"
+                    id="idbookstitle"
+                    text="Book Titles"
+                />
+            </Column>
+            <Column id="idauthorcolumn">
+                <Title
+                    id="idbooksauthor"
+                    text="Author"
                 />
             </Column>
            
         </columns>
  
         <items>
-            <ColumnListItem id="idColumnListBooksLoan">
+            <ColumnListItem id="idbooksitems">
                 <cells>
                     <Text
-                        id="idBISBNvalue"
-                        text="{notify}"
+                        id="idBooksValue"
+                        text="{title}"
                     />
                    
+                   <Text
+                        id="idBooksAuthor"
+                        text="{author}"
+                    />
                 </cells>
             </ColumnListItem>
         </items>
