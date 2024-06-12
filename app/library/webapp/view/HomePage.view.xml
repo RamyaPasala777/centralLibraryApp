@@ -1,26 +1,44 @@
-
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     controllerName="com.app.library.controller.HomePage"
 >
-    
-        <Page
-            title="{i18n>title}"
-            class="page"
-        >
-            <headerContent>
-                <Title
-                    class="title"
-                    text="Library of ARTIHCUS"
-                    textAlign="Center"
-                />
-                <Button id="books" text="Available Books" type="Default" press="AvailableBooksBtn"/>
-                <Button id="loginbtn" text="Login" type="Emphasized" icon="sap-icon://visits" press="loginbtn"/>
-                <Button id="signupbtn" text="SignUp" type="Emphasized" press="signupbtn" />
-                
-            </headerContent>
-           
-        </Page>
-   
+    <Page
+        title="{i18n>title}"
+        class="page"
+    >
+        <headerContent>
+            <Title
+                class="title"
+                text="Library of ARTIHCUS"
+                textAlign="Center"
+            />
+             <Button
+                id="showQuickView"
+                text="Company Info"
+                press="onhandleCompanyQuickViewPress"
+                ariaHasPopup="Dialog"
+            />
+            <Button
+                id="books"
+                text="Available Books"
+                type="Default"
+                press="AvailableBooksBtn"
+            />
+            <Button
+                id="loginbtn"
+                text="Login"
+                type="Emphasized"
+                icon="sap-icon://visits"
+                press="loginbtn"
+            />
+            <Button
+                id="signupbtn"
+                text="SignUp"
+                type="Emphasized"
+                press="signupbtn"
+            />
+
+        </headerContent>
+    </Page>
 </mvc:View>

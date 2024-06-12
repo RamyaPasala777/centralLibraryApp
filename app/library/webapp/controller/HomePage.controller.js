@@ -156,6 +156,19 @@ sap.ui.define([
             }
         }
     },
+    onhandleCompanyQuickViewPress : async function () {
+        if (!this.notificationDialog1) {
+            this.notificationDialog1 = await this.loadFragment("HomePageCompanyDetails")
+        }
+        this.notificationDialog1.open();
+      },
+       onAdminDetailscancelbtn: function () {
+        this.notificationDialog1.open();
+        this.notificationDialog1.close();
+        
+      },
+      
+
     onMobileVal:async function(oEvent)
     {
         var oPhone  = oEvent.getSource();
@@ -175,10 +188,7 @@ sap.ui.define([
             } else {
                 console.error("MessageToast is not available.");
             }
-        }
-
-         
-
+        }   
 
     }
         });

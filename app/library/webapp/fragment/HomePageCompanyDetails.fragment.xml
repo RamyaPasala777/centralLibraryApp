@@ -1,0 +1,82 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idloginDialogn"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Login Details"
+    >
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Text text="Information about Company" />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="iddddddcancelbtn"
+                        icon="sap-icon://sys-cancel"
+                        press=" onAdminDetailscancelbtn"
+                        type="Reject"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <Table
+            id="idUserLoans5"
+            alternateRowColors="true"
+            backgroundDesign="Transparent"
+       
+        >
+            <columns>
+                <Column id="idIsb0nColumn">
+                 
+                      <HBox>
+                            <Button
+                                id="idcompanyyButton"
+                                icon="sap-icon://building"
+                                text=""
+                                press="onCompanyPress"
+                            />
+ 
+                            <Text text="Artihcus Global PVT LTD" />
+                        </HBox>
+                 
+                </Column>
+                <Column id="idEamilColumn">
+                    <Text text="" />
+                </Column>
+            </columns>
+ 
+            <items>
+                <ColumnListItem id="idColumnListBooksLoan">
+                    <cells>
+                     
+                      <VBox>
+                        <Label text="Contact Details:" />
+ 
+                        <Text text=" Plot No. 227 – Kartikeya Towers,
+                1st floor Matrusri Nagar, Miyapur,
+                 Hyderabad, Telangana 500049, India."/>
+                        <Link text="https://www.artihcus.com/" href="https://www.artihcus.com/" />
+                      </VBox>
+                    </cells>
+                </ColumnListItem>
+                <ColumnListItem id="idColumnListBooksLoan1">
+                    <cells>
+                     
+                      <VBox>
+                        <Label text="Admin Details:" />
+                        <Text text="  Name : Ramya"/>
+                         <Text text=" Mobile: 970128345"/>
+                         <Text text=" EMail:Ramya.Pasala@artihcus.com"/>
+                      </VBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Dialog>
+</core:FragmentDefinition>

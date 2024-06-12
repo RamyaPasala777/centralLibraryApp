@@ -78,3 +78,10 @@ color: green;
     width: 4800px;
     height:400px;
 }
+
+.header{
+    background-image: url("https://artihcus.com/assets/img/Articus_Logo%20SVG.svg");
+    background-size: initial;
+    background-position: initial;
+    height: 30px;
+}

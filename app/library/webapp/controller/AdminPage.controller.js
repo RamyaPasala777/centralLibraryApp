@@ -459,6 +459,7 @@ sap.ui.define([
 
             }
             
+            
              catch (error) {
                 //this.oCreateBooksDialog.close();
                 sap.m.MessageBox.error("Some technical Issue");
