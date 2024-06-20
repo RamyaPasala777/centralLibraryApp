@@ -15,12 +15,13 @@
         class="adminheader"
     >
         <f:title>
-            <f:DynamicPageTitle id="idusersListPageTitle" class="adminheader">
+            <f:DynamicPageTitle id="idusersListPageTitle" class="adminheader" >
                 <f:heading>
                 <HBox>
                     <Title
                         id="idUsersPageHeadingTitle"
                         text="{userName}"
+                        class="text"
                     />
                     </HBox>
                 </f:heading>
@@ -28,11 +29,16 @@
                   <Button id="logout1" text="logout" type="Default" press="logout1"></Button>
                 </f:navigationActions>
               
-                	<f:expandedContent >
-                    <VBox >
-						<Label text="{phoneNumber}"/>
-                        <Label text="{email}"/>
-                        </VBox>    
+                	<f:expandedContent   >
+                    <HBox justifyContent="Start">
+                    <VBox justifyContent="Start" >
+                        <Label class="text" text="{email}"/>
+                        <Label class="text" text="{ path: 'phoneNumber', formatter: '.formatPhoneNumber' }"/>
+                    </VBox>   
+                    </HBox>
+                    <HBox justifyContent="Center">
+						 <Text class="text1" text="Hello {userName}.....! Welcome to the Library of Artihcus"/>
+                    </HBox> 
 					</f:expandedContent>
                   
 					

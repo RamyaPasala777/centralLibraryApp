@@ -27,7 +27,7 @@
                   <Button id="logout2" text="logout" type="Default" press="logout2"></Button>
                 </f:navigationActions>
                 <f:expandedContent>
-                <Label id="labellll" text="Hello..!{userName} from central library"/>
+                <Label id="labellll" class="text1" text="Hello {userName}.........! Welcome to the Library of Artihcus"/>
                 </f:expandedContent>
  
                 

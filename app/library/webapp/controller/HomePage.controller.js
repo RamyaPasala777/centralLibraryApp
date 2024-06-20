@@ -116,10 +116,21 @@ sap.ui.define([
             },
 
             signupBtnClick: async function () {
-               
-       
+                
+            
             const oPayload = this.getView().getModel("localModel").getProperty("/"),
             oModel = this.getView().getModel("ModelV2");
+
+            if (!(oPayload.userName) ) {
+               MessageToast.show("please enter userName")
+               return
+            }
+            else if(!(oPayload.password)){
+                MessageToast.show("please enter the password")
+                return
+            }
+          
+
             var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
                 var phoneRegex=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
                 if(!(emailRegex.test(oPayload.email)&&phoneRegex.test(oPayload.phoneNumber))){

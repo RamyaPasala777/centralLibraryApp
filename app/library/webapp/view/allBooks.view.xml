@@ -136,6 +136,8 @@
                 id="idAllBookTable"
                 mode="MultiSelect"
                 class="admintitle"
+                headerLevel="Auto"
+                growingScrollToLoad="true"
                 alternateRowColors="true"
                 items="{ path:'/Books',  parameters : {
             $count : true
@@ -165,25 +167,26 @@
                             text="ISBN"
                         />
                     </Column>
-                    <Column id="idtitleCol">
+                    <Column id="idtitleCol" width="auto">
                         <Title
                             id="idTitleColTitle"
                             text="Title"
                         />
                     </Column>
-                    <Column id="idQuantityCol">
+                    <Column id="idQuantityCol" width="auto">
                         <Title
                             id="idQuantityColTitle"
                             text="Quantity"
+                            level="Auto"
                         />
                     </Column>
-                    <Column id="idAuthorCol">
+                    <Column id="idAuthorCol" width="auto">
                         <Title
                             id="idAuthorColTitle"
                             text="Author"
                         />
                     </Column>
-                    <Column id="idGenreCol">
+                    <Column id="idGenreCol" width="auto">
                         <Title
                             id="idGenreColTitle"
                             text="Genre"

@@ -139,32 +139,82 @@ sap.ui.define([
             },
             onDeleteBtnPress: async function () {
                 var aSelectedItems = this.byId("idBookTable").getSelectedItems();
-                if (aSelectedItems.length > 0) {
-                    var aISBNs = [];
-                    aSelectedItems.forEach(function (oSelectedItem) {
-                        var sISBN = oSelectedItem.getBindingContext().getObject().isbn;
-                        aISBNs.push(sISBN);
-                        oSelectedItem.getBindingContext().delete("$auto");
+                MessageBox.confirm("Are you sure want to delete the book",{
+                    onClose:function(oAction){
+                        if(oAction===MessageBox.Action.OK){
+                            if (aSelectedItems.length > 0) {
+                                var aISBNs = [];
+                                aSelectedItems.forEach(function (oSelectedItem) {
+                                    var sISBN = oSelectedItem.getBindingContext().getObject().isbn;
+                                    var oQuantity=oSelectedItem.getBindingContext().getObject().quantity
+                                    var oAvaiableQuantity=oSelectedItem.getBindingContext().getObject().availability
+            
+                                 if(oQuantity==oAvaiableQuantity){
+                                    aISBNs.push(sISBN);
+                                    oSelectedItem.getBindingContext().delete("$auto");
+                                 }
+                                 else{
+                                    MessageToast.show("The Book was in Active loan")
+                                    return
+                                 }    
+                                    
+                                });
+             
+                                Promise.all(aISBNs.map(function (sISBN) {
+                                    return new Promise(function (resolve, reject) {
+                                        resolve( " Successfully Deleted");
+                                    });
+                                })).then(function (aMessages) {
+                                    aMessages.forEach(function (sMessage) {
+                                        MessageToast.show(sMessage);
+                                    });
+                                }).catch(function (oError) {
+                                    MessageToast.show("Deletion Error: " + oError);
+                                });
+             
+                                this.getView().byId("idBookTable").removeSelections(true);
+                                this.getView().byId("idBookTable").getBinding("items").refresh();
+                            } else {
+                                MessageToast.show("Please Select Rows to Delete");
+                            };
+                        }
+                    }
+                })
+                // if (aSelectedItems.length > 0) {
+                //     var aISBNs = [];
+                //     aSelectedItems.forEach(function (oSelectedItem) {
+                //         var sISBN = oSelectedItem.getBindingContext().getObject().isbn;
+                //         var oQuantity=oSelectedItem.getBindingContext().getObject().quantity
+                //         var oAvaiableQuantity=oSelectedItem.getBindingContext().getObject().availability
+
+                //      if(oQuantity==oAvaiableQuantity){
+                //         aISBNs.push(sISBN);
+                //         oSelectedItem.getBindingContext().delete("$auto");
+                //      }
+                //      else{
+                //         MessageToast.show("The Book was in Active loan")
+                //         return
+                //      }    
                         
-                    });
+                //     });
  
-                    Promise.all(aISBNs.map(function (sISBN) {
-                        return new Promise(function (resolve, reject) {
-                            resolve( " Successfully Deleted");
-                        });
-                    })).then(function (aMessages) {
-                        aMessages.forEach(function (sMessage) {
-                            MessageToast.show(sMessage);
-                        });
-                    }).catch(function (oError) {
-                        MessageToast.show("Deletion Error: " + oError);
-                    });
+                //     Promise.all(aISBNs.map(function (sISBN) {
+                //         return new Promise(function (resolve, reject) {
+                //             resolve( " Successfully Deleted");
+                //         });
+                //     })).then(function (aMessages) {
+                //         aMessages.forEach(function (sMessage) {
+                //             MessageToast.show(sMessage);
+                //         });
+                //     }).catch(function (oError) {
+                //         MessageToast.show("Deletion Error: " + oError);
+                //     });
  
-                    this.getView().byId("idBookTable").removeSelections(true);
-                    this.getView().byId("idBookTable").getBinding("items").refresh();
-                } else {
-                    MessageToast.show("Please Select Rows to Delete");
-                };
+                //     this.getView().byId("idBookTable").removeSelections(true);
+                //     this.getView().byId("idBookTable").getBinding("items").refresh();
+                // } else {
+                //     MessageToast.show("Please Select Rows to Delete");
+                // };
                
             },
             onCreate: async function () {

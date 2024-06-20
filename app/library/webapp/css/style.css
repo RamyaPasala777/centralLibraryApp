@@ -63,10 +63,10 @@ color: green;
 }
 
 .adminheader{
-    background-color: linen;
+    background-color: bisque;
 }
 .admintitle{
-  background-color: linen ;
+  background-color:  bisque;
 }
 .admintable{
     background-color: bisque;
@@ -84,4 +84,12 @@ color: green;
     background-size: initial;
     background-position: initial;
     height: 30px;
+}
+
+.text{
+   color: deeppink; 
+}
+
+.text1{
+    color:olivedrab
 }

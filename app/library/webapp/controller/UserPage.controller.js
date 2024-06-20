@@ -42,6 +42,12 @@ sap.ui.define(
 
            oObjectPage.bindElement(`/Users(${id})`);
        },
+       formatPhoneNumber: function(phoneNumber) {             
+        if (typeof phoneNumber === "string") {                 
+        return phoneNumber.replace(/,/g, "");             
+        }             
+        return phoneNumber; 
+        },
         onAllBooksFilterPress:function(oEvent){
             var userId=oEvent.getSource().getParent().getBindingContext().getObject().ID;
             console.log(userId)

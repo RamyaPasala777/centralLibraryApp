@@ -3,89 +3,130 @@ ID: central-library-system
 description: A simple CAP project.
 version: 1.0.0
 modules:
-  - name: central-library-system-srv
-    type: nodejs
-    path: gen/srv
-    requires:
-      - name: central-library-system-db
-    provides:
-      - name: srv-api
-        properties:
-          srv-url: ${default-url}
-    parameters:
-      buildpack: nodejs_buildpack
-      readiness-health-check-http-endpoint: /health
-      readiness-health-check-type: http
-    build-parameters:
-      builder: npm
-  - name: central-library-system-db-deployer
-    type: hdb
-    path: gen/db
-    requires:
-      - name: central-library-system-db
-    parameters:
-      buildpack: nodejs_buildpack
-  - name: central-library-system-app-content
-    type: com.sap.application.content
-    path: .
-    requires:
-      - name: central-library-system-repo-host
-        parameters:
-          content-target: true
-    build-parameters:
-      build-result: resources
-      requires:
-        - artifacts:
-            - comapplibrary.zip
-          name: comapplibrary
-          target-path: resources/
-  - name: comapplibrary
-    type: html5
-    path: app/library
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npm install
-        - npm run build:cf
-      supported-platforms:
-        []
-resources:
+- name: central-library-system-srv
+  type: nodejs
+  path: gen/srv
+  requires:
   - name: central-library-system-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: central-library-system-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: central-library-system-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: central-library-system-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
   - name: central-library-system-repo-host
-    type: org.cloudfoundry.managed-service
     parameters:
-      service: html5-apps-repo
-      service-name: central-library-system-html5-srv
-      service-plan: app-host
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comapplibrary.zip
+      name: comapplibrary
+      target-path: resources/
+    - artifacts:
+      - comapplibraryapp.zip
+      name: comapplibraryapp
+      target-path: resources/
+- name: comapplibrary
+  type: html5
+  path: app/library
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comapplibraryapp
+  type: html5
+  path: app/library_app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: central-library-system-destination-content
+  type: com.sap.application.content
+  requires:
   - name: central-library-system-destination-service
-    type: org.cloudfoundry.managed-service
     parameters:
-      config:
-        HTML5Runtime_enabled: false
-        init_data:
-          instance:
-            destinations:
-              - Authentication: NoAuthentication
-                Name: ui5
-                ProxyType: Internet
-                Type: HTTP
-                URL: https://ui5.sap.com
-            existing_destinations_policy: update
-        version: 1.0.0
-      service: destination
-      service-name: central-library-system-destination-service
-      service-plan: lite
+      content-target: true
+  - name: central-library-system-repo-host
+    parameters:
+      service-key:
+        name: central-library-system-repo-host-key
+  - name: uaa_central-library-system
+    parameters:
+      service-key:
+        name: uaa_central-library-system-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: central_library_app_central_library_system_repo_host
+          ServiceInstanceName: central-library-system-html5-srv
+          ServiceKeyName: central-library-system-repo-host-key
+          sap.cloud.service: central_library_app
+        - Authentication: OAuth2UserTokenExchange
+          Name: central_library_app_uaa_central_library_system
+          ServiceInstanceName: central-library-system-xsuaa-service
+          ServiceKeyName: uaa_central-library-system-key
+          sap.cloud.service: central_library_app
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+resources:
+- name: central-library-system-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: central-library-system-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: central-library-system-html5-srv
+    service-plan: app-host
+- name: central-library-system-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: central-library-system-destination-service
+    service-plan: lite
+- name: uaa_central-library-system
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: central-library-system-xsuaa-service
+    service-plan: application
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production
